@@ -32,6 +32,7 @@ class linktous_Widget extends WP_Widget {
      
        
     function widget( $args, $instance ) {
+        
         global $post;
         
         $title = apply_filters( 'widget_title', $instance['title'] );
@@ -42,19 +43,21 @@ class linktous_Widget extends WP_Widget {
         extract($args);
         $checkbox_var = $instance[ 'checkbox_var' ] ? 'true' : 'false';
        
+        $blogtitle =  get_the_title();
+        $blogname = get_bloginfo( 'name' );
+        
         if ($instance['checkbox_var'] == "on") {
             $currenturl = get_bloginfo( 'url' );
-            $blogname = get_bloginfo( 'name' );
-             echo '<textarea id="bar" class="linktous">&lt;a href='. $currenturl .'&gt;' . $blogname . '&lt;/a&gt;</textarea>
-            ';
          }
          else{
             $currenturl = get_permalink( $post->ID );
-            $blogtitle =  get_the_title();
-             $blogname = get_bloginfo( 'name' );
-             echo '<textarea id="bar" class="linktous">&lt;a href='. $currenturl .'&gt;' . $blogname .'-'.$blogtitle . '&lt;/a&gt;</textarea>
-            ';
          }
+             echo '
+<textarea class="linktous">
+&lt;a href='. $currenturl .'&gt;' . $blogname .'-'.$blogtitle . '&lt;/a&gt;
+</textarea>
+            ';
+         
         ?>
 <span style= "float:left;"><button class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#bar">Copy</button></span>
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
@@ -97,7 +100,13 @@ clipboard.on('error', function(e) {
             $title = __( 'Link To Us', 'linktous' );
         }
        
-       $checked = $instance[ 'checkbox_var' ];
+        if ( isset( $instance[ 'checkbox_var' ] ) ) {
+            $checked = $instance[ 'checkbox_var' ];
+        }
+        else {
+            $checked = '';
+        }
+       
         ?>
      
         <p>
