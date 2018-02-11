@@ -53,13 +53,13 @@ class linktous_Widget extends WP_Widget {
             $currenturl = get_permalink( $post->ID );
          }
              echo '
-<textarea id="bar" class="linktous">
+<textarea id="linktous" class="linktous">
 &lt;a href="'. $currenturl .'" title="'. $blogtitle .'" rel="noopener" &gt;' . $blogname .'-'.$blogtitle . '&lt;/a&gt;
 </textarea>
             ';
          
         ?>
-<span style= "float:left;"><button class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#bar">Copy</button></span>
+<span style= "float:left;"><button class="btn btn-primary" data-clipboard-action="copy" data-clipboard-target="#linktous">Copy</button></span>
 <script src="https://cdn.jsdelivr.net/clipboard.js/1.5.13/clipboard.min.js"></script>
 <script>
     var clipboard = new Clipboard('.btn');
