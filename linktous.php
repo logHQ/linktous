@@ -96,6 +96,8 @@ clipboard.on('error', function(e) {
         else {
             $title = __( 'Link To Us', 'linktous' );
         }
+       
+       $checked = $instance[ 'checkbox_var' ];
         ?>
      
         <p>
@@ -103,7 +105,7 @@ clipboard.on('error', function(e) {
         <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
         </p>
      <p>
-    <input class="checkbox" type="checkbox" <?php checked( $instance[ 'checkbox_var' ], 'on' ); ?> 
+    <input class="checkbox" type="checkbox" <?php checked( $checked, 'on' ); ?> 
            id="<?php echo $this->get_field_id( 'checkbox_var' ); ?>" 
            name="<?php echo $this->get_field_name( 'checkbox_var' ); ?>" /> 
     <label for="<?php echo $this->get_field_id( 'checkbox_var' ); ?>">Only use frontpage URL and title</label>
