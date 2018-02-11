@@ -53,8 +53,8 @@ class linktous_Widget extends WP_Widget {
             $currenturl = get_permalink( $post->ID );
          }
              echo '
-<textarea class="linktous">
-&lt;a href='. $currenturl .'&gt;' . $blogname .'-'.$blogtitle . '&lt;/a&gt;
+<textarea id="bar" class="linktous">
+&lt;a href="'. $currenturl .'" title="'. $blogtitle .'" rel="noopener" &gt;' . $blogname .'-'.$blogtitle . '&lt;/a&gt;
 </textarea>
             ';
          
